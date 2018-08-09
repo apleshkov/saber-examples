@@ -4,8 +4,13 @@ This example shows how to build an iOS application with [Saber](https://github.c
 
 All dependencies are managed by [CocoaPods](https://github.com/CocoaPods/CocoaPods).
 
+_Saber_ runs automatically on every build via a build phase:
+```
+saber sources --workDir ${PROJECT_DIR}/SaberIOSSessionExample --from Sources --out Saber
+```
+
 There're two containers (see `Saber` folder for generated files):
-- `AppContainer`: a global container, represents an `App` scope
+- `AppContainer`: a global container, represents an `App` scope (see `AppDelegate.swift`)
 - `UserContainer`: a user-specific container, represents a `User` scope
 
 One of the most important service is a `UserManager` (`App`-scoped). It's responsible for creating the `UserContainer` and logging a user in/out.
