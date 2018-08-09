@@ -1,0 +1,6 @@
+framework module Pods_SaberIOSSessionExample {
+  umbrella header "Pods-SaberIOSSessionExample-umbrella.h"
+
+  export *
+  module * { export * }
+}

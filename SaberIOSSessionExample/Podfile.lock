@@ -1,0 +1,24 @@
+PODS:
+  - Alamofire (4.7.0)
+  - KeychainAccess (3.1.0)
+  - PureLayout (3.0.2)
+
+DEPENDENCIES:
+  - Alamofire
+  - KeychainAccess
+  - PureLayout
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - KeychainAccess
+    - PureLayout
+
+SPEC CHECKSUMS:
+  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
+  KeychainAccess: 94c5540b32eabf7bc32bfb976a268e8ea05fd6da
+  PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
+
+PODFILE CHECKSUM: e080f4e73625a718fe243b61cbea3f67465944ab
+
+COCOAPODS: 1.5.3
