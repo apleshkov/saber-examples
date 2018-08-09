@@ -1,6 +1,6 @@
 # iOS Session Example
 
-This example shows how to build an iOS application with [Saber](https://github.com/apleshkov/saber) to work with user sessions: logging in, logging out and loading user data. It uses [Alamofire](https://github.com/Alamofire/Alamofire) to work with [GitHub API](https://developer.github.com), [KeychainAccess](https://github.com/kishikawakatsumi/KeychainAccess) to store tokens and [PureLayout](https://github.com/PureLayout/PureLayout) for Auto Layout.
+This example shows how to build an iOS application with [Saber](https://github.com/apleshkov/saber) to work with user sessions: logging in, logging out and loading a user data. It uses [Alamofire](https://github.com/Alamofire/Alamofire) to work with [GitHub API](https://developer.github.com), [KeychainAccess](https://github.com/kishikawakatsumi/KeychainAccess) to store tokens and [PureLayout](https://github.com/PureLayout/PureLayout) for Auto Layout.
 
 All dependencies are managed by [CocoaPods](https://github.com/CocoaPods/CocoaPods).
 
