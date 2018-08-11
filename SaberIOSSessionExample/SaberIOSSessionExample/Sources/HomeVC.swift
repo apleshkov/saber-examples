@@ -14,7 +14,7 @@ import Alamofire
 class HomeVC: UIViewController {
 
     // @saber.inject
-    var makeAuthVC: (() -> AuthorizerVC)!
+    var makeAuthVC: LazyInjection<AuthorizerVC>!
 
     // @saber.inject
     var userManager: UserManager!
@@ -31,7 +31,11 @@ class HomeVC: UIViewController {
             object: nil
         )
 
-        UIApplication.shared.appContainer.injectTo(homeVC: self)
+        // see AppDelegate.swift
+        guard let appContainer = (UIApplication.shared.delegate as? AppDelegate)?.appContainer else {
+            fatalError()
+        }
+        appContainer.injectTo(homeVC: self)
 
         view.addSubview(loggedView)
         loggedView.autoCenterInSuperview()

@@ -27,10 +27,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-
-extension UIApplication {
-
-    var appContainer: AppContainer {
-        return (delegate as! AppDelegate).appContainer
-    }
-}
