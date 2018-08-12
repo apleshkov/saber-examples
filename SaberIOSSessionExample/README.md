@@ -23,4 +23,4 @@ After a user is logged in, the app gets his/her name via a `UserAPI` (`User`-sco
 
 There's no mechanism of token refreshing to simplify this example.
 
-_Note_: both `github_client_id` and `github_client_secret` environment variables are provided via a `Run` scheme in Xcode, so you have to set your own to launch the app. 
+_Note_: both `github_client_id` and `github_client_secret` environment variables are provided via a `Run` scheme in Xcode, so you have to set your own to get the app working. 
