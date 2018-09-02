@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SnapKit
 
 // @saber.scope(App)
 // @saber.injectOnly
@@ -38,7 +39,10 @@ class HomeVC: UIViewController {
         appContainer.injectTo(homeVC: self)
 
         view.addSubview(loggedView)
-        loggedView.autoCenterInSuperview()
+        loggedView.snp.makeConstraints {
+            $0.width.lessThanOrEqualToSuperview().inset(20)
+            $0.center.equalToSuperview()
+        }
 
         syncUser()
     }

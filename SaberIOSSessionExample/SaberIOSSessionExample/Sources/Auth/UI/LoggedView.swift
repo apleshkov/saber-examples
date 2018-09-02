@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import PureLayout
+import SnapKit
 
 class LoggedView: UIView {
 
@@ -20,6 +20,7 @@ class LoggedView: UIView {
     override init(frame: CGRect) {
         nameLabel = UILabel(frame: .zero)
         nameLabel.numberOfLines = 0
+        nameLabel.textAlignment = .center
 
         actionButton = UIButton(type: .system)
 
@@ -29,7 +30,10 @@ class LoggedView: UIView {
         stackView.axis = .vertical
         stackView.spacing = 10
         addSubview(stackView)
-        stackView.autoPinEdgesToSuperviewMargins()
+        
+        stackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
 
         actionButton.addTarget(self, action: #selector(didTapActionButton), for: .touchUpInside)
     }

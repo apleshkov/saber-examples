@@ -1,24 +1,24 @@
 PODS:
-  - Alamofire (4.7.0)
-  - KeychainAccess (3.1.0)
-  - PureLayout (3.0.2)
+  - Alamofire (4.7.3)
+  - KeychainAccess (3.1.1)
+  - SnapKit (4.0.0)
 
 DEPENDENCIES:
   - Alamofire
   - KeychainAccess
-  - PureLayout
+  - SnapKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - KeychainAccess
-    - PureLayout
+    - SnapKit
 
 SPEC CHECKSUMS:
-  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
-  KeychainAccess: 94c5540b32eabf7bc32bfb976a268e8ea05fd6da
-  PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: e080f4e73625a718fe243b61cbea3f67465944ab
+PODFILE CHECKSUM: a835d9d430fe7f07a6ae1affc6f04693501d6c80
 
 COCOAPODS: 1.5.3
