@@ -2,12 +2,9 @@
 
 This example shows how to build an iOS application with [Saber](https://github.com/apleshkov/saber) to work with user sessions: logging in, logging out and loading a user data. It uses [Alamofire](https://github.com/Alamofire/Alamofire) to work with [GitHub API](https://developer.github.com) and [KeychainAccess](https://github.com/kishikawakatsumi/KeychainAccess) to store tokens.
 
-All dependencies are managed by [CocoaPods](https://github.com/CocoaPods/CocoaPods).
+All dependencies are managed by [CocoaPods](https://github.com/CocoaPods/CocoaPods) (via [Bundler](https://bundler.io)).
 
-_Saber_ runs automatically on every build via a build phase:
-```
-saber sources --workDir ${PROJECT_DIR}/SaberIOSSessionExample --from Sources --out Saber --config saber-config.yml
-```
+_Saber_ runs inside a build phase via [Mint](https://github.com/yonaskolb/mint).
 
 There're two containers (see `Saber` folder for generated files):
 - `AppContainer`: a global container, represents an `App` scope (see `AppDelegate.swift`)

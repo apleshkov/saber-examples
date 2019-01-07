@@ -1,7 +1,7 @@
 PODS:
-  - Alamofire (4.7.3)
-  - KeychainAccess (3.1.1)
-  - SnapKit (4.0.0)
+  - Alamofire (4.8.0)
+  - KeychainAccess (3.1.2)
+  - SnapKit (4.2.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -15,9 +15,9 @@ SPEC REPOS:
     - SnapKit
 
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
-  KeychainAccess: 7bd430028059754a3debab3cfc0bd1fc7fb85df3
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  KeychainAccess: b3816fddcf28aa29d94b10ec305cd52be14c472b
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
 
 PODFILE CHECKSUM: a835d9d430fe7f07a6ae1affc6f04693501d6c80
 

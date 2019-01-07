@@ -222,6 +222,7 @@
 				TargetAttributes = {
 					53157983211343160023A19F = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -269,7 +270,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "saber sources --workDir ${PROJECT_DIR}/SaberIOSSessionExample --from Sources --out Saber --config saber-config.yml";
+			shellScript = "mint run saber saber sources --workDir ${PROJECT_DIR}/SaberIOSSessionExample --from Sources --out Saber --config saber-config.yml\n";
 		};
 		BBC6F98CAD69AACB6EF9A63C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -485,7 +486,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = saber.SaberIOSSessionExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -503,7 +504,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = saber.SaberIOSSessionExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
