@@ -54,7 +54,6 @@ extension UserManager {
     }
 
     private func makeUserContainer(accessToken: GitHub.AccessToken) -> UserContainer {
-        let externals = UserExternals(accessToken: accessToken)
-        return UserContainer(appContainer: appContainer, userExternals: externals)
+        return UserContainer(appContainer: appContainer, gitHubAccessToken: accessToken)
     }
 }

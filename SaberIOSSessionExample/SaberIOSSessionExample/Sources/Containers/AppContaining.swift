@@ -7,21 +7,10 @@
 //
 
 import Foundation
-import KeychainAccess
-
-class AppExternals {
-
-    let github: GitHub
-
-    let keychain: Keychain = Keychain(service: "GitHub")
-
-    init(github: GitHub) {
-        self.github = github
-    }
-}
 
 // @saber.container(AppContainer)
 // @saber.scope(App)
-// @saber.externals(AppExternals)
+// @saber.externals(GitHub, Keychain)
+// @saber.imports(KeychainAccess)
 // @saber.threadSafe
 protocol AppContaining {}

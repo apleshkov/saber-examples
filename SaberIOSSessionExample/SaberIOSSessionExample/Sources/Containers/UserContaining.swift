@@ -8,18 +8,9 @@
 
 import Foundation
 
-class UserExternals {
-
-    let accessToken: GitHub.AccessToken
-
-    init(accessToken: GitHub.AccessToken) {
-        self.accessToken = accessToken
-    }
-}
-
 // @saber.container(UserContainer)
 // @saber.scope(User)
 // @saber.dependsOn(AppContainer)
-// @saber.externals(UserExternals)
+// @saber.externals(GitHub.AccessToken)
 // @saber.threadSafe
 protocol UserContaining {}
