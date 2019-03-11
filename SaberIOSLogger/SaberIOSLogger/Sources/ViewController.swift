@@ -9,15 +9,18 @@
 import UIKit
 
 // @saber.scope(App)
-// @saber.injectOnly
 class ViewController: UIViewController {
     
-    // @saber.inject
-    var logger: ConsoleLogger!
+    private let logger: ConsoleLogger
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        UIApplication.shared.appContainer.injectTo(viewController: self)
+    // @saber.inject
+    init(logger: ConsoleLogger) {
+        self.logger = logger
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewWillAppear(_ animated: Bool) {

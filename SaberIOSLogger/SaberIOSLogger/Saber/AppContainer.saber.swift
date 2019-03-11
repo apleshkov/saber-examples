@@ -18,12 +18,17 @@ internal class AppContainer: AppContaining {
         return consoleLogger
     }
 
+    internal var viewController: ViewController {
+        let viewController = self.makeViewController()
+        return viewController
+    }
+
     private func makeConsoleLogger() -> ConsoleLogger {
         return ConsoleLogger()
     }
 
-    internal func injectTo(viewController: ViewController) {
-        viewController.logger = self.consoleLogger
+    private func makeViewController() -> ViewController {
+        return ViewController(logger: self.consoleLogger)
     }
 
 }
