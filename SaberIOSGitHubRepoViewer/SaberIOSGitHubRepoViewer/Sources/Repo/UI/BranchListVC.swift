@@ -9,21 +9,36 @@
 import UIKit
 
 // @saber.scope(Repo)
-// @saber.injectOnly
+class BranchListVCFactory {
+    
+    let make: (_ selectedRepo: Repo) -> BranchListVC
+    
+    // @saber.inject
+    init(repoAPI: RepoAPI, logger: Logging?) {
+        make = { (selectedRepo) in
+            return BranchListVC(
+                selectedRepo: selectedRepo,
+                repoAPI: repoAPI,
+                logger: logger
+            )
+        }
+    }
+}
+
 class BranchListVC: UIViewController {
     
-    // @saber.inject
-    var repoAPI: RepoAPI!
+    private let repoAPI: RepoAPI
     
-    // @saber.inject
-    var logger: Logging?
+    private let logger: Logging?
     
     private let selectedRepo: Repo
     
     private var list: [Branch] = []
     
-    init(selectedRepo: Repo) {
+    init(selectedRepo: Repo, repoAPI: RepoAPI, logger: Logging?) {
         self.selectedRepo = selectedRepo
+        self.repoAPI = repoAPI
+        self.logger = logger
         super.init(nibName: nil, bundle: nil)
     }
     

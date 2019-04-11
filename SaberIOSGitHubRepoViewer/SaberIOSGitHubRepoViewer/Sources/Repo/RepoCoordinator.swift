@@ -33,9 +33,8 @@ extension RepoCoordinator: RepoListVCDelegate {
     
     func repoListVC(_ repoListVC: RepoListVC, didSelectRepo repo: Repo) {
         logger?.log("[RepoCoordinator] show branch list for \(repo.fullName)")
-        let branchListVC = BranchListVC(selectedRepo: repo)
+        let branchListVC = repoContainer.branchListVCFactory.make(repo)
         branchListVC.title = repo.fullName
-        repoContainer.injectTo(branchListVC: branchListVC)
         repoListVC.navigationController?.pushViewController(branchListVC, animated: true)
     }
 }

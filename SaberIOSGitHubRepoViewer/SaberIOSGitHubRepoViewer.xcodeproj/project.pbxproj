@@ -99,6 +99,7 @@
 		07935CA021EA763A00C6914D /* Repo */ = {
 			isa = PBXGroup;
 			children = (
+				0719664D21EB1FE6007C9AC1 /* RepoCoordinator.swift */,
 				07935CB121EA82D400C6914D /* UI */,
 				07935CAC21EA7FAF00C6914D /* Entities */,
 				07935CA621EA794D00C6914D /* RepoContaining.swift */,
@@ -130,7 +131,6 @@
 			children = (
 				07935CB221EA830200C6914D /* RepoListVC.swift */,
 				07935CB421EA872A00C6914D /* BranchListVC.swift */,
-				0719664D21EB1FE6007C9AC1 /* RepoCoordinator.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -279,7 +279,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "mint run apleshkov/saber@0.2.0 saber sources --workDir ${PROJECT_DIR}/SaberIOSGitHubRepoViewer --from Sources --out Saber\n";
+			shellScript = "mint run apleshkov/saber@0.2.1 saber sources --workDir ${PROJECT_DIR}/SaberIOSGitHubRepoViewer --from Sources --out Saber\n";
 		};
 		1197334A095163023EE779CB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
