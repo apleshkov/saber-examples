@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <title>{% block pageTitle %}{% endblock %}</title>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="mt-2">{% block title %}{% endblock %}</h2>
+      <div class="mt-3">
+        {% block content %}{% endblock %}
+      </div>
+    </div>
+  </body>
+</html>

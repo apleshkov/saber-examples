@@ -1,0 +1,10 @@
+# top-most EditorConfig file
+root = true
+
+[*.{swift,sh}]
+indent_style = space
+indent_size = 4
+
+[*.stencil]
+indent_style = space
+indent_size = 2

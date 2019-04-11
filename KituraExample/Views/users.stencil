@@ -1,0 +1,26 @@
+{% extends "base.stencil" %}
+
+{% block pageTitle %}Users{% endblock %}
+{% block title %}Users{% endblock %}
+
+{% block content %}  
+  <table class="table border">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in data.users %}
+        <tr>
+          <th scope="row">{{ user.id }}</th>
+          <td>{{ user.name }}</td>
+          <td>{{ user.role }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a class="text-danger" href="/logout">Log out</a>
+{% endblock %}

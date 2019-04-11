@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Logging out...</title>
+  </head>
+  <body>
+    <p>Logging out...</p>
+    <script type="text/javascript">
+      window.location = '/';
+    </script>
+  </body>
+</html>
