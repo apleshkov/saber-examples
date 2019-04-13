@@ -14,7 +14,7 @@ internal class RepoContainer: RepoContaining {
         self.appContainer = appContainer
     }
 
-    internal var branchListVCFactory: BranchListVCFactory {
+    internal var branchListVCFactory: BranchListVC.Factory {
         let branchListVCFactory = self.makeBranchListVCFactory()
         return branchListVCFactory
     }
@@ -26,18 +26,27 @@ internal class RepoContainer: RepoContaining {
         return repoAPI
     }
 
+    internal var latestCommitVCFactory: LatestCommitVC.Factory {
+        let latestCommitVCFactory = self.makeLatestCommitVCFactory()
+        return latestCommitVCFactory
+    }
+
     internal var repoListVC: RepoListVC {
         let repoListVC = self.makeRepoListVC()
         self.injectTo(repoListVC: repoListVC)
         return repoListVC
     }
 
-    private func makeBranchListVCFactory() -> BranchListVCFactory {
-        return BranchListVCFactory(repoAPI: self.repoAPI, logger: self.appContainer.logging)
+    private func makeBranchListVCFactory() -> BranchListVC.Factory {
+        return BranchListVC.Factory(repoAPI: self.repoAPI, logger: self.appContainer.logging)
     }
 
     private func makeRepoAPI() -> RepoAPI {
         return RepoAPI(sessionManager: self.appContainer.networkSessionManager)
+    }
+
+    private func makeLatestCommitVCFactory() -> LatestCommitVC.Factory {
+        return LatestCommitVC.Factory(repoAPI: self.repoAPI, logger: self.appContainer.logging)
     }
 
     private func makeRepoListVC() -> RepoListVC {

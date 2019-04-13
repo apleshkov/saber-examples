@@ -7,8 +7,13 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 struct Branch {
     
     var name: String
+    
+    init(json: JSON) throws {
+        name = json["name"].stringValue
+    }
 }

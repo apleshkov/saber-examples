@@ -7,12 +7,18 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 struct Repo {
     
     var owner: String
     
     var name: String
+    
+    init(json: JSON) throws {
+        owner = json["owner"]["login"].stringValue
+        name = json["name"].stringValue
+    }
 }
 
 extension Repo {

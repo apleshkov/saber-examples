@@ -26,6 +26,9 @@
 		07BFBFCB21EA7179004E05E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BFBFCA21EA7179004E05E3 /* AppDelegate.swift */; };
 		07BFBFD221EA717B004E05E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07BFBFD121EA717B004E05E3 /* Assets.xcassets */; };
 		07BFBFD521EA717B004E05E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07BFBFD321EA717B004E05E3 /* LaunchScreen.storyboard */; };
+		07D0D7E5225FDD0500D615E3 /* Commit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D0D7E4225FDD0500D615E3 /* Commit.swift */; };
+		07D0D7E7225FDF5100D615E3 /* LatestCommitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D0D7E6225FDF5100D615E3 /* LatestCommitVC.swift */; };
+		07D0D7EB22626B6D00D615E3 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D0D7EA22626B6D00D615E3 /* APIError.swift */; };
 		671F8560736556E175B5A277 /* Pods_SaberIOSGitHubRepoViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077A89780752E5E2343C06F9 /* Pods_SaberIOSGitHubRepoViewer.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +55,9 @@
 		07BFBFD121EA717B004E05E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07BFBFD421EA717B004E05E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		07BFBFD621EA717B004E05E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		07D0D7E4225FDD0500D615E3 /* Commit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Commit.swift; sourceTree = "<group>"; };
+		07D0D7E6225FDF5100D615E3 /* LatestCommitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatestCommitVC.swift; sourceTree = "<group>"; };
+		07D0D7EA22626B6D00D615E3 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		917139C69C2D70800969340A /* Pods-SaberIOSGitHubRepoViewer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaberIOSGitHubRepoViewer.release.xcconfig"; path = "Pods/Target Support Files/Pods-SaberIOSGitHubRepoViewer/Pods-SaberIOSGitHubRepoViewer.release.xcconfig"; sourceTree = "<group>"; };
 		AD5511ACCC297FAE5A9D60B2 /* Pods-SaberIOSGitHubRepoViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SaberIOSGitHubRepoViewer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SaberIOSGitHubRepoViewer/Pods-SaberIOSGitHubRepoViewer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,6 +128,7 @@
 			children = (
 				07935CAD21EA7FBB00C6914D /* Repo.swift */,
 				07935CAF21EA7FD900C6914D /* Branch.swift */,
+				07D0D7E4225FDD0500D615E3 /* Commit.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -129,6 +136,7 @@
 		07935CB121EA82D400C6914D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				07D0D7E6225FDF5100D615E3 /* LatestCommitVC.swift */,
 				07935CB221EA830200C6914D /* RepoListVC.swift */,
 				07935CB421EA872A00C6914D /* BranchListVC.swift */,
 			);
@@ -173,6 +181,7 @@
 				07935CA121EA769C00C6914D /* Network */,
 				07935CA021EA763A00C6914D /* Repo */,
 				07935C9D21EA763200C6914D /* App */,
+				07D0D7EA22626B6D00D615E3 /* APIError.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -347,6 +356,9 @@
 				0719665021EB251E007C9AC1 /* AppCoordinator.swift in Sources */,
 				0719665721EB2A24007C9AC1 /* LoggerProvider.swift in Sources */,
 				07935CA921EA798900C6914D /* RepoContainer.saber.swift in Sources */,
+				07D0D7E7225FDF5100D615E3 /* LatestCommitVC.swift in Sources */,
+				07D0D7E5225FDD0500D615E3 /* Commit.swift in Sources */,
+				07D0D7EB22626B6D00D615E3 /* APIError.swift in Sources */,
 				07935CA721EA794D00C6914D /* RepoContaining.swift in Sources */,
 				0719664E21EB1FE6007C9AC1 /* RepoCoordinator.swift in Sources */,
 				07935CB521EA872A00C6914D /* BranchListVC.swift in Sources */,

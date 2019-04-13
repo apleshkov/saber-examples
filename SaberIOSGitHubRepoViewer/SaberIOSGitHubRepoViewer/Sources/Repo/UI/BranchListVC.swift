@@ -8,21 +8,9 @@
 
 import UIKit
 
-// @saber.scope(Repo)
-class BranchListVCFactory {
+protocol BranchListVCDelegate: class {
     
-    let make: (_ selectedRepo: Repo) -> BranchListVC
-    
-    // @saber.inject
-    init(repoAPI: RepoAPI, logger: Logging?) {
-        make = { (selectedRepo) in
-            return BranchListVC(
-                selectedRepo: selectedRepo,
-                repoAPI: repoAPI,
-                logger: logger
-            )
-        }
-    }
+    func branchListVC(_ branchListVC: BranchListVC, didSelectRepo repo: Repo, branch: Branch)
 }
 
 class BranchListVC: UIViewController {
@@ -31,15 +19,34 @@ class BranchListVC: UIViewController {
     
     private let logger: Logging?
     
-    private let selectedRepo: Repo
+    private let repo: Repo
     
     private var list: [Branch] = []
     
-    init(selectedRepo: Repo, repoAPI: RepoAPI, logger: Logging?) {
-        self.selectedRepo = selectedRepo
+    weak var delegate: BranchListVCDelegate?
+    
+    init(repo: Repo, repoAPI: RepoAPI, logger: Logging?) {
+        self.repo = repo
         self.repoAPI = repoAPI
         self.logger = logger
         super.init(nibName: nil, bundle: nil)
+    }
+    
+    // @saber.scope(Repo)
+    class Factory {
+        
+        let make: (_ repo: Repo) -> BranchListVC
+        
+        // @saber.inject
+        init(repoAPI: RepoAPI, logger: Logging?) {
+            make = { (repo) in
+                return BranchListVC(
+                    repo: repo,
+                    repoAPI: repoAPI,
+                    logger: logger
+                )
+            }
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -60,7 +67,7 @@ extension BranchListVC {
         view.addSubview(tableView)
         
         logger?.log("[BranchListVC] start loading...")
-        repoAPI.branches(owner: selectedRepo.owner, repo: selectedRepo.name) { [weak self, weak tableView] (response) in
+        repoAPI.branches(owner: repo.owner, repo: repo.name) { [weak self, weak tableView] (response) in
             switch response.result {
             case .success(let value):
                 self?.logger?.log("[BranchListVC] loaded")
@@ -73,7 +80,13 @@ extension BranchListVC {
     }
 }
 
-extension BranchListVC: UITableViewDelegate {}
+extension BranchListVC: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let branch = list[indexPath.row]
+        delegate?.branchListVC(self, didSelectRepo: repo, branch: branch)
+    }
+}
 
 extension BranchListVC: UITableViewDataSource {
     

@@ -8,25 +8,12 @@ internal class AppContainer: AppContaining {
 
     internal let gitHub: GitHub
 
-    private var cached_networkSessionManager: NetworkSessionManager?
-
     private var cached_loggerProvider: LoggerProvider?
+
+    private var cached_networkSessionManager: NetworkSessionManager?
 
     internal init(gitHub: GitHub) {
         self.gitHub = gitHub
-    }
-
-    internal var networkSessionManager: NetworkSessionManager {
-        if let cached = self.cached_networkSessionManager { return cached }
-        let networkSessionManager = self.makeNetworkSessionManager()
-        self.cached_networkSessionManager = networkSessionManager
-        return networkSessionManager
-    }
-
-    internal var appCoordinator: AppCoordinator {
-        let appCoordinator = self.makeAppCoordinator()
-        self.injectTo(appCoordinator: appCoordinator)
-        return appCoordinator
     }
 
     internal var loggerProvider: LoggerProvider {
@@ -36,10 +23,23 @@ internal class AppContainer: AppContaining {
         return loggerProvider
     }
 
+    internal var appCoordinator: AppCoordinator {
+        let appCoordinator = self.makeAppCoordinator()
+        self.injectTo(appCoordinator: appCoordinator)
+        return appCoordinator
+    }
+
     internal var repoCoordinator: RepoCoordinator {
         let repoCoordinator = self.makeRepoCoordinator()
         self.injectTo(repoCoordinator: repoCoordinator)
         return repoCoordinator
+    }
+
+    internal var networkSessionManager: NetworkSessionManager {
+        if let cached = self.cached_networkSessionManager { return cached }
+        let networkSessionManager = self.makeNetworkSessionManager()
+        self.cached_networkSessionManager = networkSessionManager
+        return networkSessionManager
     }
 
     internal var logging: Logging? {
@@ -47,20 +47,20 @@ internal class AppContainer: AppContaining {
         return logging
     }
 
-    private func makeNetworkSessionManager() -> NetworkSessionManager {
-        return NetworkSessionManager(gitHub: self.gitHub)
+    private func makeLoggerProvider() -> LoggerProvider {
+        return LoggerProvider()
     }
 
     private func makeAppCoordinator() -> AppCoordinator {
         return AppCoordinator(appContainer: self)
     }
 
-    private func makeLoggerProvider() -> LoggerProvider {
-        return LoggerProvider()
-    }
-
     private func makeRepoCoordinator() -> RepoCoordinator {
         return RepoCoordinator(appContainer: self)
+    }
+
+    private func makeNetworkSessionManager() -> NetworkSessionManager {
+        return NetworkSessionManager(gitHub: self.gitHub)
     }
 
     private func makeLogging() -> Logging? {

@@ -22,7 +22,7 @@ class RepoCoordinator {
     }
 }
 
-extension RepoCoordinator: RepoListVCDelegate {
+extension RepoCoordinator {
     
     func makeRootVC() -> UIViewController {
         let repoListVC = repoContainer.repoListVC
@@ -30,11 +30,24 @@ extension RepoCoordinator: RepoListVCDelegate {
         repoListVC.title = "Public Repos"
         return repoListVC
     }
+}
+
+extension RepoCoordinator: RepoListVCDelegate {
     
     func repoListVC(_ repoListVC: RepoListVC, didSelectRepo repo: Repo) {
         logger?.log("[RepoCoordinator] show branch list for \(repo.fullName)")
         let branchListVC = repoContainer.branchListVCFactory.make(repo)
+        branchListVC.delegate = self
         branchListVC.title = repo.fullName
         repoListVC.navigationController?.pushViewController(branchListVC, animated: true)
+    }
+}
+
+extension RepoCoordinator: BranchListVCDelegate {
+    
+    func branchListVC(_ branchListVC: BranchListVC, didSelectRepo repo: Repo, branch: Branch) {
+        logger?.log("[RepoCoordinator] show lastest commit for \(branch.name)")
+        let commitVC = repoContainer.latestCommitVCFactory.make(repo, branch)
+        branchListVC.navigationController?.pushViewController(commitVC, animated: true)
     }
 }

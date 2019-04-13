@@ -29,12 +29,8 @@ class RepoAPI {
         let request = sessionManager.request("repositories", parameters: params)
         request.responseJSON(queue: DispatchQueue.main) { (response) in
             let parsed: DataResponse<[Repo]> = response.flatMap { (raw) in
-                let json = JSON(raw)
-                return json.arrayValue.map {
-                    return Repo(
-                        owner: $0["owner"]["login"].stringValue,
-                        name: $0["name"].stringValue
-                    )
+                return try JSON(raw).arrayValue.map {
+                    return try Repo(json: $0)
                 }
             }
             completion(parsed)
@@ -45,14 +41,24 @@ class RepoAPI {
         let request = sessionManager.request("repos/\(owner)/\(repo)/branches")
         request.responseJSON(queue: DispatchQueue.main) { (response) in
             let parsed: DataResponse<[Branch]> = response.flatMap { (raw) in
-                let json = JSON(raw)
-                return json.arrayValue.map {
-                    return Branch(
-                        name: $0["name"].stringValue
-                    )
+                return try JSON(raw).arrayValue.map {
+                    return try Branch(json: $0)
                 }
             }
             completion(parsed)
         }
     }
+    
+    func latestCommit(owner: String, repo: String, branch: String, completion: @escaping (DataResponse<Commit>) -> ()) {
+        let request = sessionManager.request("repos/\(owner)/\(repo)/branches/\(branch)")
+        request.responseJSON(queue: DispatchQueue.main) { (response) in
+            let parsed: DataResponse<Commit> = response.flatMap { (raw) in
+                let json = JSON(raw)["commit"]
+                return try Commit(json: json)
+            }
+            completion(parsed)
+        }
+    }
 }
+
+private let dateFormatter = DateFormatter()
