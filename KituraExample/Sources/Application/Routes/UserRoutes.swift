@@ -8,7 +8,7 @@
 import Foundation
 import Kitura
 
-func initializeUserRoutes(app: App) {
+func initializeUserRoutes(app: Application) {
     app.router.get("/") { (request, response, next) in
         try request.container.usersAction.invoke(response: response)
     }

@@ -11,7 +11,7 @@ import KituraSession
 import Credentials
 import CredentialsHTTP
 
-func initializeAuthRoutes(app: App) throws {
+func initializeAuthRoutes(app: Application) throws {
     try app.initDefaultUsers()
     
     let credentials = Credentials()
@@ -27,7 +27,7 @@ func initializeAuthRoutes(app: App) throws {
     app.router.all("/", middleware: credentials)
 }
 
-private func initializeLogoutRoute(app: App) {
+private func initializeLogoutRoute(app: Application) {
     app.router.get("/logout") { (request, response, next) in
         try response
             .status(.unauthorized)
@@ -37,7 +37,7 @@ private func initializeLogoutRoute(app: App) {
 }
 
 
-extension App {
+extension Application {
     
     fileprivate func initDefaultUsers() throws {
         let userStorage = container.userStorage

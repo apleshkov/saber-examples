@@ -1,7 +1,7 @@
 import Kitura
 import KituraStencil
 
-public class App {
+public class Application {
     
     let container: AppContainer
     
