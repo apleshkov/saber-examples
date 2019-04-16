@@ -11,18 +11,11 @@ internal class RequestContainer: RequestContaining {
 
     internal unowned let routerRequest: RouterRequest
 
-    private var cached_userProvider: UserProvider?
+    private var cached_authorizedUserProvider: AuthorizedUserProvider?
 
     internal init(appContainer: AppContainer, routerRequest: RouterRequest) {
         self.appContainer = appContainer
         self.routerRequest = routerRequest
-    }
-
-    internal var userProvider: UserProvider {
-        if let cached = self.cached_userProvider { return cached }
-        let userProvider = self.makeUserProvider()
-        self.cached_userProvider = userProvider
-        return userProvider
     }
 
     internal var usersAction: UsersAction {
@@ -30,21 +23,28 @@ internal class RequestContainer: RequestContaining {
         return usersAction
     }
 
-    internal var user: User? {
-        let user = self.makeUser()
-        return user
+    internal var authorizedUserProvider: AuthorizedUserProvider {
+        if let cached = self.cached_authorizedUserProvider { return cached }
+        let authorizedUserProvider = self.makeAuthorizedUserProvider()
+        self.cached_authorizedUserProvider = authorizedUserProvider
+        return authorizedUserProvider
     }
 
-    private func makeUserProvider() -> UserProvider {
-        return UserProvider(request: self.routerRequest, userStorage: self.appContainer.userStorage)
+    internal var authorizedUser: AuthorizedUser? {
+        let authorizedUser = self.makeAuthorizedUser()
+        return authorizedUser
     }
 
     private func makeUsersAction() -> UsersAction {
-        return UsersAction(user: self.user, userStorage: self.appContainer.userStorage)
+        return UsersAction(user: self.authorizedUser, userStorage: self.appContainer.userStorage)
     }
 
-    private func makeUser() -> User? {
-        let provider = self.userProvider
+    private func makeAuthorizedUserProvider() -> AuthorizedUserProvider {
+        return AuthorizedUserProvider(request: self.routerRequest, userStorage: self.appContainer.userStorage)
+    }
+
+    private func makeAuthorizedUser() -> AuthorizedUser? {
+        let provider = self.authorizedUserProvider
         return provider.provide()
     }
 

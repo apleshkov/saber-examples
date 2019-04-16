@@ -1,5 +1,5 @@
 //
-//  UserProvider.swift
+//  AuthorizedUserProvider.swift
 //  Application
 //
 //  Created by Andrey Pleshkov on 21.03.2019.
@@ -8,9 +8,11 @@
 import Foundation
 import Kitura
 
+typealias AuthorizedUser = User
+
 // @saber.scope(Request)
 // @saber.cached
-class UserProvider {
+class AuthorizedUserProvider {
     
     private let user: User?
     
@@ -24,7 +26,7 @@ class UserProvider {
     }
     
     // @saber.provider
-    func provide() -> User? {
+    func provide() -> AuthorizedUser? {
         return user
     }
 }

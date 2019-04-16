@@ -8,20 +8,9 @@ internal class AppContainer: AppContaining {
 
     private let lock = NSRecursiveLock()
 
-    private var cached_authorizer: Authorizer?
-
     private var cached_userStorage: UserStorage?
 
     internal init() {
-    }
-
-    internal var authorizer: Authorizer {
-        self.lock.lock()
-        defer { self.lock.unlock() }
-        if let cached = self.cached_authorizer { return cached }
-        let authorizer = self.makeAuthorizer()
-        self.cached_authorizer = authorizer
-        return authorizer
     }
 
     internal var userStorage: UserStorage {
@@ -31,10 +20,6 @@ internal class AppContainer: AppContaining {
         let userStorage = self.makeUserStorage()
         self.cached_userStorage = userStorage
         return userStorage
-    }
-
-    private func makeAuthorizer() -> Authorizer {
-        return Authorizer(userStorage: self.userStorage)
     }
 
     private func makeUserStorage() -> UserStorage {

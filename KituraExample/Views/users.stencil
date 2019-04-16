@@ -15,7 +15,12 @@
     <tbody>
       {% for user in data.users %}
         <tr>
-          <th scope="row">{{ user.id }}</th>
+          <th scope="row">
+            {{ user.id }}
+            {% if user.id == authorizedUser.id %}
+              <span class="badge badge-primary">current</span>
+            {% endif %}
+          </th>
           <td>{{ user.name }}</td>
           <td>{{ user.role }}</td>
         </tr>

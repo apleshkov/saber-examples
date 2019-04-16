@@ -11,20 +11,22 @@ import Kitura
 // @saber.scope(Request)
 class UsersAction {
     
-    let user: User?
+    let authorizeduser: AuthorizedUser?
     
     let userStorage: UserStorage
     
     // @saber.inject
-    init(user: User?, userStorage: UserStorage) {
-        self.user = user
+    init(user: AuthorizedUser?, userStorage: UserStorage) {
+        self.authorizeduser = user
         self.userStorage = userStorage
     }
     
     func invoke(response: RouterResponse) throws {
-        if let user = user {
-            if user.role == .admin {
-                var context = StencilTemplateContext(user: user)
+        if let authorizedUser = authorizeduser {
+            var context = StencilTemplateContext(
+                authorizedUser: authorizedUser
+            )
+            if authorizedUser.role == .admin {                
                 context.data["users"] = userStorage.allUsers.map {
                     return [
                         "id": $0.id,

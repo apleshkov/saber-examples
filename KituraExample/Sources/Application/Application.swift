@@ -11,9 +11,8 @@ public class App {
         container = AppContainer()
         router.add(templateEngine: StencilTemplateEngine())
         router.all(middleware: Saber(appContainer: container))
-        try initializeBasicAuthRoutes(app: self)
+        try initializeAuthRoutes(app: self)
         initializeUserRoutes(app: self)
-        initializeStaticFileServers(app: self)
     }
     
     public func run(port: Int) throws {
