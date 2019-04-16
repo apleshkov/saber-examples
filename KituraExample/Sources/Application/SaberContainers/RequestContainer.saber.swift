@@ -18,11 +18,6 @@ internal class RequestContainer: RequestContaining {
         self.routerRequest = routerRequest
     }
 
-    internal var usersAction: UsersAction {
-        let usersAction = self.makeUsersAction()
-        return usersAction
-    }
-
     internal var authorizedUserProvider: AuthorizedUserProvider {
         if let cached = self.cached_authorizedUserProvider { return cached }
         let authorizedUserProvider = self.makeAuthorizedUserProvider()
@@ -30,17 +25,22 @@ internal class RequestContainer: RequestContaining {
         return authorizedUserProvider
     }
 
+    internal var usersAction: UsersAction {
+        let usersAction = self.makeUsersAction()
+        return usersAction
+    }
+
     internal var authorizedUser: AuthorizedUser? {
         let authorizedUser = self.makeAuthorizedUser()
         return authorizedUser
     }
 
-    private func makeUsersAction() -> UsersAction {
-        return UsersAction(user: self.authorizedUser, userStorage: self.appContainer.userStorage)
-    }
-
     private func makeAuthorizedUserProvider() -> AuthorizedUserProvider {
         return AuthorizedUserProvider(request: self.routerRequest, userStorage: self.appContainer.userStorage)
+    }
+
+    private func makeUsersAction() -> UsersAction {
+        return UsersAction(user: self.authorizedUser, userStorage: self.appContainer.userStorage)
     }
 
     private func makeAuthorizedUser() -> AuthorizedUser? {
