@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-project_dir="${1}"
+project_dir="."
 saber="mint run apleshkov/saber@0.2.1 saber"
 
 ${saber} sources \
