@@ -40,7 +40,7 @@ internal class RequestContainer: RequestContaining {
     }
 
     private func makeUsersAction() -> UsersAction {
-        return UsersAction(user: self.authorizedUser, userStorage: self.appContainer.userStorage)
+        return UsersAction(authorizedUser: self.authorizedUser, userStorage: self.appContainer.userStorage)
     }
 
     private func makeAuthorizedUser() -> AuthorizedUser? {
