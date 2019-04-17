@@ -10,7 +10,6 @@ import Dispatch
 
 // @saber.scope(App)
 // @saber.cached
-// @saber.threadSafe
 class UserStorage {
     
     private var users: [User.Id : User] = [:]
